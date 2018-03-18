@@ -122,8 +122,7 @@ function infixToPostfix(infixEquation) {
   const infixEquationElements = _.split(infixEquation, /([+( -)*/^)])/);
   const infixEquationElementsFiltered = _.filter(
     infixEquationElements,
-    infixEquationElement =>
-      infixEquationElement !== '' && infixEquationElement !== ' '
+    infixEquationElement => _.trim(infixEquationElement)
   );
 
   _.forEach(infixEquationElementsFiltered, infixEquationElement => {

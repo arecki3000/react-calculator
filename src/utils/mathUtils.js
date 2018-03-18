@@ -33,11 +33,11 @@ function power(inputBase, inputExponent) {
    * TODO: Think about smarter approach
    * Simplify this function
    * Handle more cases eg: 0.5 ^ -0.5 ^ -0.3
-  */
+   */
   if (exponent < 0) {
     result = 1 / power(base, -exponent);
-  } else if(exponent < 1) {
-    result = Math.pow((base < 0) ? -base : base, exponent);
+  } else if (exponent < 1) {
+    result = Math.pow(base < 0 ? -base : base, exponent);
   } else {
     while (exponent > 0) {
       if ((exponent & 1) !== 0) {
@@ -48,46 +48,49 @@ function power(inputBase, inputExponent) {
     }
   }
 
-  return (inputBase < 0) ? result * (-1) : result;
+  return inputBase < 0 ? result * -1 : result;
 }
 
 function calculatePostfixEquation(postfixEquation) {
   const resultStack = [];
   const postfixEquationElements = _.split(postfixEquation, ' ');
 
-  _.forEach(postfixEquationElements, (postfixEquationElement) => {
-    if(isNumeric(postfixEquationElement)) {
+  _.forEach(postfixEquationElements, postfixEquationElement => {
+    if (isNumeric(postfixEquationElement)) {
       resultStack.push(postfixEquationElement);
     } else {
       let result;
       let lastElementInList = resultStack.pop();
       let oneBeforeLastElementInList = resultStack.pop();
 
-      switch(postfixEquationElement) {
-      case '+':
-        result = addition(oneBeforeLastElementInList, lastElementInList);
-        break;
-      case '-':
-        result = subtraction(oneBeforeLastElementInList, lastElementInList);
-        break;
-      case '*':
-        result = multiplication(oneBeforeLastElementInList, lastElementInList);
-        break;
-      case '/':
-        result = division(oneBeforeLastElementInList, lastElementInList);
-        break;
-      case '^':
-        result = power(oneBeforeLastElementInList, lastElementInList);
-        break;
-      default:
-        break;
+      switch (postfixEquationElement) {
+        case '+':
+          result = addition(oneBeforeLastElementInList, lastElementInList);
+          break;
+        case '-':
+          result = subtraction(oneBeforeLastElementInList, lastElementInList);
+          break;
+        case '*':
+          result = multiplication(
+            oneBeforeLastElementInList,
+            lastElementInList
+          );
+          break;
+        case '/':
+          result = division(oneBeforeLastElementInList, lastElementInList);
+          break;
+        case '^':
+          result = power(oneBeforeLastElementInList, lastElementInList);
+          break;
+        default:
+          break;
       }
 
       resultStack.push(result);
     }
   });
 
-  return (resultStack.length > 1) ? ['error'] : resultStack.pop();
+  return resultStack.length > 1 ? ['error'] : resultStack.pop();
 }
 
 /**
@@ -96,55 +99,61 @@ function calculatePostfixEquation(postfixEquation) {
  * eg: '10 + 20 + 30' -> '10 20 + 30 +'
  */
 function infixToPostfix(infixEquation) {
-  let  outputQueue = '';
-  let  operatorsStack = [];
-  let  operators = {
+  let outputQueue = '';
+  let operatorsStack = [];
+  let operators = {
     '^': {
-      precedence: 4,
+      precedence: 4
     },
     '/': {
-      precedence: 3,
+      precedence: 3
     },
     '*': {
-      precedence: 3,
+      precedence: 3
     },
     '+': {
-      precedence: 2,
+      precedence: 2
     },
     '-': {
-      precedence: 2,
+      precedence: 2
     }
   };
 
-  const infixEquationElements = _.split(infixEquation, /([\+\( -)\*+\/+\^+\(\)])/);
-  const infixEquationElementsFiltered = _.filter(infixEquationElements, (infixEquationElements) => infixEquationElements !== '' && infixEquationElements !== ' ');
+  const infixEquationElements = _.split(infixEquation, /([+( -)*/^)])/);
+  const infixEquationElementsFiltered = _.filter(
+    infixEquationElements,
+    infixEquationElement =>
+      infixEquationElement !== '' && infixEquationElement !== ' '
+  );
 
-  _.forEach(infixEquationElementsFiltered, (infixEquationElement) => {
-    if(isNumeric(infixEquationElement)) {
+  _.forEach(infixEquationElementsFiltered, infixEquationElement => {
+    if (isNumeric(infixEquationElement)) {
       outputQueue += `${infixEquationElement} `;
-    } else if(_.includes('^*/+-', infixEquationElement)) {
+    } else if (_.includes('^*/+-', infixEquationElement)) {
       let operator = infixEquationElement;
       let lastOperatorFromStack = _.last(operatorsStack);
 
-      while(
+      while (
         _.includes('^*/+-', lastOperatorFromStack) &&
-        (operator !== '^' && operators[operator].precedence <= operators[lastOperatorFromStack].precedence)
+        (operator !== '^' &&
+          operators[operator].precedence <=
+            operators[lastOperatorFromStack].precedence)
       ) {
         outputQueue += `${operatorsStack.pop()} `;
         lastOperatorFromStack = _.last(operatorsStack);
       }
       operatorsStack.push(operator);
-    } else if(infixEquationElement === '(') {
+    } else if (infixEquationElement === '(') {
       operatorsStack.push(infixEquationElement);
-    } else if(infixEquationElement === ')') {
-      while(_.last(operatorsStack) !== '(') {
+    } else if (infixEquationElement === ')') {
+      while (_.last(operatorsStack) !== '(') {
         outputQueue += `${operatorsStack.pop()} `;
       }
       operatorsStack.pop();
     }
   });
 
-  while(operatorsStack.length > 0) {
+  while (operatorsStack.length > 0) {
     outputQueue += `${operatorsStack.pop()} `;
   }
 

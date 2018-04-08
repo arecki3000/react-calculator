@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button, { enhance } from './Button';
+import { calculatorButtons } from '../../consts/buttons';
 
 class ButtonsPanel extends PureComponent {
   static propTypes = {
@@ -9,7 +10,7 @@ class ButtonsPanel extends PureComponent {
   };
 
   static defaultProps = {
-    clearingButtonType: 'CE'
+    clearingButtonType: calculatorButtons.CE
   };
 
   render() {
@@ -21,27 +22,81 @@ class ButtonsPanel extends PureComponent {
           type={this.props.clearingButtonType}
           className="color-red"
         />
-        <CalculatorButton type="(" className="color-gray" />
-        <CalculatorButton type=")" className="color-gray" />
-        <CalculatorButton type="^" className="color-gray">
+        <CalculatorButton
+          type={calculatorButtons.LEFT_PARENTHESES}
+          className="color-gray"
+        />
+        <CalculatorButton
+          type={calculatorButtons.RIGHT_PARENTHESES}
+          className="color-gray"
+        />
+        <CalculatorButton type={calculatorButtons.CARET} className="color-gray">
           x<sup>y</sup>
         </CalculatorButton>
-        <CalculatorButton type="7" className="color-white" />
-        <CalculatorButton type="8" className="color-white" />
-        <CalculatorButton type="9" className="color-white" />
-        <CalculatorButton type="×" className="color-gray" />
-        <CalculatorButton type="4" className="color-white" />
-        <CalculatorButton type="5" className="color-white" />
-        <CalculatorButton type="6" className="color-white" />
-        <CalculatorButton type="÷" className="color-gray" />
-        <CalculatorButton type="1" className="color-white" />
-        <CalculatorButton type="2" className="color-white" />
-        <CalculatorButton type="3" className="color-white" />
-        <CalculatorButton type="-" className="color-gray" />
-        <CalculatorButton type="0" className="color-white" />
-        <CalculatorButton type="." className="color-white" />
-        <CalculatorButton type="=" className="color-white" />
-        <CalculatorButton type="+" className="color-gray" />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_7}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_8}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_9}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.MULTIPLICATION_SIGN}
+          className="color-gray"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_4}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_5}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_6}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.OBELUS}
+          className="color-gray"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_1}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_2}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_3}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.MINUS}
+          className="color-gray"
+        />
+        <CalculatorButton
+          type={calculatorButtons.BUTTON_0}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.DOT}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.EQUALS_SIGN}
+          className="color-white"
+        />
+        <CalculatorButton
+          type={calculatorButtons.PLUS}
+          className="color-gray"
+        />
       </div>
     );
   }

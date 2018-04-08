@@ -1,0 +1,31 @@
+body {
+  font-family: sans-serif;
+  background: #085078; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #85d8ce,
+    #085078
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #85d8ce,
+    #085078
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body,
+button {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.color-red {
+  color: #d66157;
+}
+
+.color-gray {
+  color: #7f8a91;
+}
+
+.color-white {
+  color: #ffffff;
+}

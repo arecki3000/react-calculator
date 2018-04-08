@@ -12,9 +12,9 @@
     "react-scripts": "1.1.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
+    "src": [
       "eslint src --ext .js,.jsx --fix",
-      "prettier --single-quote --write",
+      "prettier src --ext .js,.jsx,.json,.css --single-quote --write",
       "git add"
     ]
   },
@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
     "eslint": "eslint src",
-    "eslint-fix": "eslint src --ext .js,.jsx --fix"
+    "eslint-fix": "eslint src --ext .js,.jsx --fix",
+    "prettier": "prettier src/**/*.{js,jsx,json,css} --single-quote --write"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -179,11 +179,20 @@ function infixToPostfix(infixEquation) {
   return outputQueue.trim();
 }
 
+function isEquationValid(equation) {
+  // TODO: Think about more cases
+  const leftParenthesesLength = (equation.match(/\(/g) || []).length;
+  const rightParenthesesLength = (equation.match(/\)/g) || []).length;
+
+  return leftParenthesesLength === rightParenthesesLength;
+}
+
 function evaluate(equation) {
   return round(calculatePostfixEquation(infixToPostfix(equation)));
 }
 
 export default {
+  isEquationValid,
   isNumeric,
   evaluate
 };

@@ -137,12 +137,24 @@ class Calculator extends PureComponent {
         equation = this.removeLastItem(prevState.equation);
       }
 
+      const result = this.calculateResult(this.equationListToString(equation));
+      if (
+        !mathUtils.isEquationValid(result) ||
+        !mathUtils.isNumeric(result) // remove when in 'isEquationValid' is more validation cases
+      ) {
+        return {
+          equation: equation,
+          result: 'Invalid equation',
+          clearingButtonType: calculatorButtons.CE
+        };
+      }
+
       return {
         equation: [
           ...equation,
           this.wrapOperand(mathematicalSigns.EQUALS_SIGN)
         ],
-        result: this.calculateResult(this.equationListToString(equation)),
+        result,
         clearingButtonType: calculatorButtons.AC
       };
     });

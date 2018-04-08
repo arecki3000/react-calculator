@@ -38,7 +38,7 @@ describe('#mathUtils', () => {
       expect(mathUtils.isNumeric('111.0m')).toBe(false);
     });
   });
-  describe('When I invoke "evaluate" function passing math equation as parameter', () => {
+  describe('When I invoke "evaluate" function passing math text as parameter', () => {
     describe('should returns proper result for:', () => {
       it('the equations of addition', () => {
         expect(mathUtils.evaluate('0 + 0')).toEqual(0);

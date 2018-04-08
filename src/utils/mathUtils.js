@@ -107,7 +107,7 @@ function calculatePostfixEquation(postfixEquation) {
 }
 
 /**
- * Modify equation in infix notation to postfix notation
+ * Modify text in infix notation to postfix notation
  * (called also Reverse Polish Notation, more info: https://en.wikipedia.org/wiki/Reverse_Polish_notation)
  * eg: '10 + 20 + 30' -> '10 20 + 30 +'
  */

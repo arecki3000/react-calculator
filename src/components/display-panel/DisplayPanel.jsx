@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import DisplayPanelEquation from './DisplayPanelEquation';
-import DisplayPanelResult from './DisplayPanelResult';
+import DisplayPanelRow from './DisplayPanelRow';
 
 class DisplayPanel extends PureComponent {
   static propTypes = {
@@ -17,8 +16,16 @@ class DisplayPanel extends PureComponent {
   render() {
     return (
       <div className="calculator-display-panel">
-        <DisplayPanelEquation equation={this.props.equation} />
-        <DisplayPanelResult result={this.props.result} />
+        <DisplayPanelRow
+          text={this.props.equation}
+          className="calculator-display-panel-equation color-gray"
+          maxTextLength={30}
+        />
+        <DisplayPanelRow
+          text={this.props.result}
+          className="calculator-display-panel-result color-white"
+          maxTextLength={14}
+        />
       </div>
     );
   }

@@ -2,7 +2,41 @@ import mathUtils from '../utils/mathUtils';
 
 describe('#mathUtils', () => {
   describe('isNumeric', () => {
-    // TODO: Write tests.
+    it('should return true if passed value is numeric', () => {
+      expect(mathUtils.isNumeric(0)).toBe(true);
+      expect(mathUtils.isNumeric(10)).toBe(true);
+      expect(mathUtils.isNumeric(143)).toBe(true);
+      expect(mathUtils.isNumeric(-2343)).toBe(true);
+      expect(mathUtils.isNumeric(942.43)).toBe(true);
+      expect(mathUtils.isNumeric(-859.234444)).toBe(true);
+      expect(mathUtils.isNumeric('1')).toBe(true);
+      expect(mathUtils.isNumeric('0000')).toBe(true);
+      expect(mathUtils.isNumeric('00001123')).toBe(true);
+      expect(mathUtils.isNumeric('000.01123')).toBe(true);
+      expect(mathUtils.isNumeric('1230')).toBe(true);
+      expect(mathUtils.isNumeric('234.43')).toBe(true);
+      expect(mathUtils.isNumeric('-1')).toBe(true);
+      expect(mathUtils.isNumeric('-0000')).toBe(true);
+      expect(mathUtils.isNumeric('00001123')).toBe(true);
+      expect(mathUtils.isNumeric('000.01123')).toBe(true);
+      expect(mathUtils.isNumeric('-1230.2342')).toBe(true);
+      expect(mathUtils.isNumeric('1e3')).toBe(true);
+      expect(mathUtils.isNumeric('-10e33')).toBe(true);
+    });
+    it('should return false if passed value is not numeric', () => {
+      expect(mathUtils.isNumeric(NaN)).toBe(false);
+      expect(mathUtils.isNumeric(Infinity)).toBe(false);
+      expect(mathUtils.isNumeric(undefined)).toBe(false);
+      expect(mathUtils.isNumeric(null)).toBe(false);
+      expect(mathUtils.isNumeric(true)).toBe(false);
+      expect(mathUtils.isNumeric(false)).toBe(false);
+      expect(mathUtils.isNumeric('AAA')).toBe(false);
+      expect(mathUtils.isNumeric('234234A')).toBe(false);
+      expect(mathUtils.isNumeric('1M')).toBe(false);
+      expect(mathUtils.isNumeric('M1')).toBe(false);
+      expect(mathUtils.isNumeric('A0A')).toBe(false);
+      expect(mathUtils.isNumeric('111.0m')).toBe(false);
+    });
   });
   describe('When I invoke "evaluate" function passing math equation as parameter', () => {
     describe('should returns proper result for:', () => {

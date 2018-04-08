@@ -1,6 +1,7 @@
 {
   "name": "react-calculator",
   "version": "0.1.0",
+  "homepage" : "http://krzywiecki.github.io/react-calculator",
   "private": true,
   "dependencies": {
     "husky": "^0.14.3",

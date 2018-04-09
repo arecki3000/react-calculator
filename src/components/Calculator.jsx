@@ -79,10 +79,10 @@ class Calculator extends PureComponent {
     }
   };
 
-  removeLastItem(array) {
-    const clonedArray = _.clone(array);
+  removeLastEquationItem(equation) {
+    const clonedEquation = _.clone(equation);
 
-    return _.slice(clonedArray, 0, clonedArray.length - 1);
+    return _.slice(clonedEquation, 0, clonedEquation.length - 1);
   }
 
   isPrevItemSignOfEquality(equation) {
@@ -134,7 +134,7 @@ class Calculator extends PureComponent {
       }
 
       if (this.isPrevItemAnyOfOperands(prevState.equation)) {
-        equation = this.removeLastItem(prevState.equation);
+        equation = this.removeLastEquationItem(prevState.equation);
       }
 
       const result = this.calculateResult(this.equationListToString(equation));
@@ -162,7 +162,7 @@ class Calculator extends PureComponent {
 
   onRemoveLastChar() {
     return this.setState(prevState => ({
-      equation: this.removeLastItem(prevState.equation)
+      equation: this.removeLastEquationItem(prevState.equation)
     }));
   }
 
@@ -182,7 +182,7 @@ class Calculator extends PureComponent {
         operand !== mathematicalOperands.MINUS &&
         this.isPrevItemAnyOfOperands(prevState.equation)
       ) {
-        equation = this.removeLastItem(prevState.equation);
+        equation = this.removeLastEquationItem(prevState.equation);
       }
 
       return {

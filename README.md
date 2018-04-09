@@ -2,6 +2,18 @@
 
 # [https://krzywiecki.github.io/react-calculator](https://krzywiecki.github.io/react-calculator)
 
+![logo]
+
+[logo]: https://image.ibb.co/h5pMBc/react_calculator.png "react-calculator-image"
+
+### Nice features:
+* possibility to write complex equation with parentheses
+* showing full equation
+* possibility to use keyboard
+
+### Known issues:
+* in current version of the component could occur problems with decimal and big numbers. In JavaScript all numbers are IEEE 754 floating point numbers. Due to the binary nature of their encoding, some decimal numbers cannot be represented with perfect accuracy.  
+
 ### Quick setup:
 
 In the project directory, you can run:

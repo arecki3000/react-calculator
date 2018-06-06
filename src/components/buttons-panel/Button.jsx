@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 export const enhance = (Component, props) =>
-  class extends PureComponent {// eslint-disable-line
+  class extends PureComponent {
+    // eslint-disable-line
     static propTypes = {
       type: PropTypes.string
     };

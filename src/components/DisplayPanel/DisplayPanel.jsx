@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import DisplayPanelRow from './DisplayPanelRow';
+import DisplayPanelRow from '../DisplayPanelRow/DisplayPanelRow';
 
 class DisplayPanel extends PureComponent {
   static propTypes = {

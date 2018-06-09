@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Button, { enhance } from './Button';
+import Button, { enhance } from '../Button/Button';
 import { calculatorButtons } from '../../consts/buttons';
 
 class ButtonsPanel extends PureComponent {

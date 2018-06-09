@@ -74,29 +74,29 @@ function calculatePostfixEquation(postfixEquation) {
       let oneBeforeLastElementInList = resultStack.pop();
 
       switch (postfixEquationElement) {
-        case mathematicalOperands.PLUS:
-          result = addition(oneBeforeLastElementInList, lastElementInList);
-          break;
-        case mathematicalOperands.MINUS:
-          result = subtraction(oneBeforeLastElementInList, lastElementInList);
-          break;
-        case mathematicalOperands.MULTIPLICATION_SIGN:
-          result = multiplication(
-            oneBeforeLastElementInList,
-            lastElementInList
-          );
-          break;
-        case mathematicalOperands.OBELUS:
-          result = division(oneBeforeLastElementInList, lastElementInList);
-          break;
-        case mathematicalOperands.CARET:
-          result = exponentiation(
-            oneBeforeLastElementInList,
-            lastElementInList
-          );
-          break;
-        default:
-          break;
+      case mathematicalOperands.PLUS:
+        result = addition(oneBeforeLastElementInList, lastElementInList);
+        break;
+      case mathematicalOperands.MINUS:
+        result = subtraction(oneBeforeLastElementInList, lastElementInList);
+        break;
+      case mathematicalOperands.MULTIPLICATION_SIGN:
+        result = multiplication(
+          oneBeforeLastElementInList,
+          lastElementInList
+        );
+        break;
+      case mathematicalOperands.OBELUS:
+        result = division(oneBeforeLastElementInList, lastElementInList);
+        break;
+      case mathematicalOperands.CARET:
+        result = exponentiation(
+          oneBeforeLastElementInList,
+          lastElementInList
+        );
+        break;
+      default:
+        break;
       }
 
       resultStack.push(result);

@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import React, { PureComponent } from 'react';
-import DisplayPanel from './display-panel/DisplayPanel';
-import ButtonsPanel from './buttons-panel/ButtonsPanel';
-import mathUtils from '../utils/mathUtils';
+import DisplayPanel from '../DisplayPanel/DisplayPanel';
+import ButtonsPanel from '../ButtonsPanel/ButtonsPanel';
+import mathUtils from '../../utils/mathUtils';
 import {
   keyboardButtons,
   calculatorButtons,
   mathematicalSigns,
   mathematicalOperands
-} from '../consts/buttons';
+} from '../../consts/buttons';
 import './Calculator.css';
 
 class Calculator extends PureComponent {
@@ -34,48 +34,48 @@ class Calculator extends PureComponent {
 
   keyboardHandler = event => {
     switch (event.key) {
-      case keyboardButtons.BACKSPACE:
-        this.onClick(this.state.clearingButtonType);
+    case keyboardButtons.BACKSPACE:
+      this.onClick(this.state.clearingButtonType);
+      break;
+    case keyboardButtons.DELETE:
+      this.onClick(calculatorButtons.AC);
+      break;
+    case keyboardButtons.DOT:
+    case keyboardButtons.COMMA:
+      this.onClick(calculatorButtons.DOT);
+      break;
+    case keyboardButtons.LEFT_PARENTHESES:
+      this.onClick(calculatorButtons.LEFT_PARENTHESES);
+      break;
+    case keyboardButtons.RIGHT_PARENTHESES:
+      this.onClick(calculatorButtons.RIGHT_PARENTHESES);
+      break;
+    case keyboardButtons.CARET:
+      this.onClick(calculatorButtons.CARET);
+      break;
+    case keyboardButtons.SMALL_X:
+    case keyboardButtons.BIG_X:
+    case keyboardButtons.ASTERISK:
+      this.onClick(calculatorButtons.MULTIPLICATION_SIGN);
+      break;
+    case keyboardButtons.SLASH:
+      this.onClick(calculatorButtons.OBELUS);
+      break;
+    case keyboardButtons.PLUS:
+      this.onClick(calculatorButtons.PLUS);
+      break;
+    case keyboardButtons.MINUS:
+      this.onClick(calculatorButtons.MINUS);
+      break;
+    case keyboardButtons.ENTER:
+    case keyboardButtons.EQUALS_SIGN:
+      this.onClick(calculatorButtons.EQUALS_SIGN);
+      break;
+    default:
+      if (_.includes(calculatorButtons, event.key)) {
+        this.onClick(event.key);
         break;
-      case keyboardButtons.DELETE:
-        this.onClick(calculatorButtons.AC);
-        break;
-      case keyboardButtons.DOT:
-      case keyboardButtons.COMMA:
-        this.onClick(calculatorButtons.DOT);
-        break;
-      case keyboardButtons.LEFT_PARENTHESES:
-        this.onClick(calculatorButtons.LEFT_PARENTHESES);
-        break;
-      case keyboardButtons.RIGHT_PARENTHESES:
-        this.onClick(calculatorButtons.RIGHT_PARENTHESES);
-        break;
-      case keyboardButtons.CARET:
-        this.onClick(calculatorButtons.CARET);
-        break;
-      case keyboardButtons.SMALL_X:
-      case keyboardButtons.BIG_X:
-      case keyboardButtons.ASTERISK:
-        this.onClick(calculatorButtons.MULTIPLICATION_SIGN);
-        break;
-      case keyboardButtons.SLASH:
-        this.onClick(calculatorButtons.OBELUS);
-        break;
-      case keyboardButtons.PLUS:
-        this.onClick(calculatorButtons.PLUS);
-        break;
-      case keyboardButtons.MINUS:
-        this.onClick(calculatorButtons.MINUS);
-        break;
-      case keyboardButtons.ENTER:
-      case keyboardButtons.EQUALS_SIGN:
-        this.onClick(calculatorButtons.EQUALS_SIGN);
-        break;
-      default:
-        if (_.includes(calculatorButtons, event.key)) {
-          this.onClick(event.key);
-          break;
-        }
+      }
     }
   };
 
@@ -108,20 +108,20 @@ class Calculator extends PureComponent {
 
   onClick = type => {
     switch (type) {
-      case calculatorButtons.EQUALS_SIGN:
-        return this.onEvaluate();
-      case calculatorButtons.CE:
-        return this.onRemoveLastChar();
-      case calculatorButtons.AC:
-        return this.onRemoveWholeEquation();
-      case calculatorButtons.CARET:
-      case calculatorButtons.MULTIPLICATION_SIGN:
-      case calculatorButtons.OBELUS:
-      case calculatorButtons.PLUS:
-      case calculatorButtons.MINUS:
-        return this.onJoinOperand(type);
-      default:
-        return this.onJoinEquationChar(type);
+    case calculatorButtons.EQUALS_SIGN:
+      return this.onEvaluate();
+    case calculatorButtons.CE:
+      return this.onRemoveLastChar();
+    case calculatorButtons.AC:
+      return this.onRemoveWholeEquation();
+    case calculatorButtons.CARET:
+    case calculatorButtons.MULTIPLICATION_SIGN:
+    case calculatorButtons.OBELUS:
+    case calculatorButtons.PLUS:
+    case calculatorButtons.MINUS:
+      return this.onJoinOperand(type);
+    default:
+      return this.onJoinEquationChar(type);
     }
   };
 

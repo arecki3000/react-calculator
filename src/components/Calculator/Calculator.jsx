@@ -9,6 +9,7 @@ import {
   mathematicalSigns,
   mathematicalOperands
 } from '../../consts/buttons';
+import uiConstants from '../../consts/uiConstants';
 import './Calculator.css';
 
 class Calculator extends PureComponent {
@@ -225,9 +226,18 @@ class Calculator extends PureComponent {
 
   render() {
     const { equation, result, clearingButtonType } = this.state;
+    let styles = {};
+
+    if(window.innerWidth <= uiConstants.PHONE_VERTICAL_BREAKPOINT) {
+      const windowHeight = window.screen.height;
+      const height = windowHeight - uiConstants.PHONE_VERTICAL_MARGIN;
+      const marginTop = height / 2 * (-1);
+
+      styles = { height, marginTop };
+    }
 
     return (
-      <div className="calculator">
+      <div className="calculator" style={ styles }>
         <DisplayPanel
           equation={this.equationListToString(equation)}
           result={result}

@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  padding: 1px;
   font-family: sans-serif;
   background: #085078; /* fallback for old browsers */
   background: -webkit-linear-gradient(

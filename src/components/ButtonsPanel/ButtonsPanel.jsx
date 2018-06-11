@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button, { enhance } from '../Button/Button';
 import { calculatorButtons } from '../../consts/buttons';
+import uiConstants from '../../consts/uiConstants';
 
 class ButtonsPanel extends PureComponent {
   static propTypes = {
@@ -15,9 +16,17 @@ class ButtonsPanel extends PureComponent {
 
   render() {
     const CalculatorButton = enhance(Button, { onClick: this.props.onClick });
+    let styles = {};
+
+    if(window.innerWidth <= uiConstants.PHONE_VERTICAL_BREAKPOINT) {
+      const windowHeight = window.screen.height;
+      const height = windowHeight - uiConstants.DISPLAY_PANEL_HEIGHT - uiConstants.PHONE_VERTICAL_MARGIN;
+
+      styles = { height };
+    }
 
     return (
-      <div className="calculator-buttons-panel">
+      <div className="calculator-buttons-panel" style={styles}>
         <CalculatorButton
           type={this.props.clearingButtonType}
           className="color-red"
